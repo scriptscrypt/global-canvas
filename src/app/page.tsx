@@ -39,7 +39,7 @@ const InfiniteCanvas = () => {
   const canvasRef = useRef<HTMLDivElement>(null);
   const [undoStack, setUndoStack] = useState<CanvasElement[][]>([]);
   const [redoStack, setRedoStack] = useState<CanvasElement[][]>([]);
-  const [activeModal, setActiveModal] = useState<string | null>(null);
+  const [_activeModal, _setActiveModal] = useState<string | null>(null);
 
   const [activeBottomSheet, setActiveBottomSheet] = useState<string | null>(
     null
@@ -147,7 +147,7 @@ const InfiniteCanvas = () => {
     []
   );
 
-  const handleElementDrag = useCallback(
+  const _handleElementDrag = useCallback(
     (id: string, dx: number, dy: number) => {
       setElements((prevElements) =>
         prevElements.map((el) =>
@@ -158,7 +158,7 @@ const InfiniteCanvas = () => {
     []
   );
 
-  const handleElementResize = useCallback(
+  const _handleElementResize = useCallback(
     (id: string, width: number, height: number) => {
       setElements((prevElements) =>
         prevElements.map((el) => (el.id === id ? { ...el, width, height } : el))
@@ -167,7 +167,7 @@ const InfiniteCanvas = () => {
     []
   );
 
-  const handleTextEdit = useCallback((id: string, text: string) => {
+  const _handleTextEdit = useCallback((id: string, text: string) => {
     setElements((prevElements) =>
       prevElements.map((el) => (el.id === id ? { ...el, text } : el))
     );
